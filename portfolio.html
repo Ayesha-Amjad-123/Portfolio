@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayesha's Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #212121;
+            color: #eceff1;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #2e2e2e;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 10px rgba(38, 166, 154, 0.5));
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #eceff1;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 400;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #26a69a;
+            transform: translateY(-2px);
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #eceff1;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 80vh;
+            text-align: center;
+            background: linear-gradient(135deg, #2e2e2e, #26a69a);
+            color: #eceff1;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background-color: #26a69a;
+            color: #212121;
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 400;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #1e857a;
+            box-shadow: 0 0 10px rgba(38, 166, 154, 0.5);
+        }
+
+        /* About Section */
+        .about {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #26a69a;
+            margin-bottom: 1.5rem;
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #b0bec5;
+        }
+
+        /* Skills Section */
+        .skills {
+            background-color: #2e2e2e;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .skills h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #26a69a;
+            margin-bottom: 2rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skill-item {
+            background-color: #3a3a3a;
+            padding: 1rem;
+            border-radius: 10px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: scale(1.05);
+            background-color: #26a69a;
+            color: #212121;
+        }
+
+        .skill-item i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-item p {
+            font-size: 1rem;
+        }
+
+        /* Education Section */
+        .education {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .education h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #26a69a;
+            margin-bottom: 1.5rem;
+        }
+
+        .education-item {
+            margin-bottom: 2rem;
+        }
+
+        .education-item h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #eceff1;
+        }
+
+        .education-item p {
+            font-size: 1.1rem;
+            color: #b0bec5;
+        }
+
+        /* Experience Section */
+        .experience {
+            background-color: #2e2e2e;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .experience h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #26a69a;
+            margin-bottom: 2rem;
+        }
+
+        .experience-item {
+            margin-bottom: 2rem;
+        }
+
+        .experience-item h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #eceff1;
+        }
+
+        .experience-item p {
+            font-size: 1.1rem;
+            color: #b0bec5;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 4rem 2rem;
+        }
+
+        .projects h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #26a69a;
+            margin-bottom: 2rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background-color: #3a3a3a;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(38, 166, 154, 0.3);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.1);
+            opacity: 0.9;
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            padding: 1rem;
+            color: #eceff1;
+        }
+
+        .project-card p {
+            padding: 0 1rem 1.5rem;
+            font-size: 1rem;
+            color: #b0bec5;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #26a69a;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-item {
+            background-color: #3a3a3a;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial-item p {
+            font-size: 1.1rem;
+            color: #b0bec5;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-item h4 {
+            font-size: 1rem;
+            color: #26a69a;
+        }
+
+        /* Contact Section */
+        .contact {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #26a69a;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact input, .contact textarea {
+            padding: 1rem;
+            border: 2px solid #26a69a;
+            border-radius: 10px;
+            font-size: 1rem;
+            background-color: #3a3a3a;
+            color: #eceff1;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact input:focus, .contact textarea:focus {
+            border-color: #1e857a;
+            outline: none;
+        }
+
+        .contact button {
+            background-color: #26a69a;
+            color: #212121;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 400;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact button:hover {
+            background-color: #1e857a;
+            box-shadow: 0 0 10px rgba(38, 166, 154, 0.5);
+        }
+
+        /* Resume Section */
+        .resume {
+            text-align: center;
+            padding: 2rem;
+            background-color: #2e2e2e;
+        }
+
+        .resume h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #26a69a;
+            margin-bottom: 1.5rem;
+        }
+
+        .resume a {
+            display: inline-block;
+            background-color: #26a69a;
+            color: #212121;
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 400;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .resume a:hover {
+            background-color: #1e857a;
+            box-shadow: 0 0 10px rgba(38, 166, 154, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2e2e2e;
+            color: #b0bec5;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                right: 0;
+                background-color: #2e2e2e;
+                width: 200px;
+                padding: 1rem;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .project-grid, .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                height: 60vh;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .about h2, .skills h2, .education h2, .experience h2, .projects h2, .testimonials h2, .contact h2, .resume h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <svg class="logo" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="45" fill="#26a69a"/>
+                <text x="50" y="65" font-family="'Poppins', sans-serif" font-size="50" font-weight="600" fill="#eceff1" text-anchor="middle">A</text>
+            </svg>
+            <div class="hamburger">☰</div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#education">Education</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h1>Welcome to Ayesha's Portfolio</h1>
+        <p>UI/UX Designer and Front-End Developer crafting intuitive, accessible, and visually stunning web experiences.</p>
+        <a href="#projects" class="cta-button">Explore My Work</a>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <p>I'm Ayesha, a passionate UI/UX designer and front-end developer with expertise in creating user-centered, responsive web interfaces. I leverage tools like HTML, CSS, JavaScript, and design platforms like Figma to deliver seamless digital experiences.</p>
+        <p>My mission is to solve real-world problems through intuitive design and robust development, ensuring accessibility and inclusivity for all users.</p>
+    </section>
+
+    <section id="skills" class="skills">
+        <h2>My Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <i>🖌️</i>
+                <p>UI/UX Design</p>
+            </div>
+            <div class="skill-item">
+                <i>💻</i>
+                <p>HTML & CSS</p>
+            </div>
+            <div class="skill-item">
+                <i>⚙️</i>
+                <p>JavaScript</p>
+            </div>
+            <div class="skill-item">
+                <i>🎨</i>
+                <p>Figma & Adobe XD</p>
+            </div>
+            <div class="skill-item">
+                <i>♿</i>
+                <p>Accessibility</p>
+            </div>
+            <div class="skill-item">
+                <i>📱</i>
+                <p>Responsive Design</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="education">
+        <h2>Education</h2>
+        <div class="education-item">
+            <h3>Bachelor’s in Computer Science</h3>
+            <p>University of Example, 2018–2022</p>
+            <p>Specialized in web development and user interface design.</p>
+        </div>
+        <div class="education-item">
+            <h3>UI/UX Design Certification</h3>
+            <p>Coursera, Microsoft UI/UX Design Principles, 2025</p>
+            <p>Completed coursework in responsive design, accessibility, and design thinking.</p>
+        </div>
+    </section>
+
+    <section id="experience" class="experience">
+        <h2>Work Experience</h2>
+        <div class="experience-item">
+            <h3>UI/UX Designer Intern</h3>
+            <p>Tech Solutions Inc., June 2023 – August 2023</p>
+            <p>Designed wireframes and high-fidelity mockups for client web applications using Figma.</p>
+        </div>
+        <div class="experience-item">
+            <h3>Front-End Developer Freelancer</h3>
+            <p>Self-Employed, 2022 – Present</p>
+            <p>Developed responsive websites for small businesses, focusing on accessibility and user experience.</p>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2>My Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <img src="https://themehunk.com/wp-content/uploads/2024/07/Bosa-Portfolio-1.png" alt="Portfolio Website">
+                <h3>Portfolio Website</h3>
+                <p>A responsive portfolio website built with HTML, CSS, and JavaScript, showcasing my design and development skills. Features include a custom SVG logo, responsive layouts, and accessibility enhancements.</p>
+            </div>
+            <div class="project-card">
+                <img src="https://cdn.dribbble.com/userupload/17496099/file/original-06a327465e373fa7d35ef9a86028900c.jpg?resize=752x&vertical=center" alt="E-Commerce UI">
+                <h3>E-Commerce UI</h3>
+                <p>Designed a user-friendly e-commerce interface with wireframes and high-fidelity mockups using Figma, optimized for usability and conversions.</p>
+            </div>
+            <div class="project-card">
+                <img src="https://cdn.shopify.com/app-store/listing_images/9d8c36f388b9b8b17cfd52b4d714a49c/desktop_screenshot/CJz98ceR_YIDEAE=.jpeg?height=720&quality=90&width=1280" alt="Accessible Web App">
+                <h3>Accessible Web App</h3>
+                <p>Developed an accessible web application using CSS media queries, ARIA landmarks, and keyboard navigation for inclusivity.</p>
+            </div>
+            <div class="project-card">
+                <img src="data:image/png;base64,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" alt="Mobile App Prototype">
+                <h3>Mobile App Prototype</h3>
+                <p>Created a high-fidelity prototype for a mobile app using Adobe XD, focusing on user-centered design principles and interaction design.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <h2>Testimonials</h2>
+        <div class="testimonial-item">
+            <p>"Ayesha’s attention to detail in UI/UX design transformed our website’s user experience. Her work is both functional and visually stunning!"</p>
+            <h4>Jane Doe, Project Manager</h4>
+        </div>
+        <div class="testimonial-item">
+            <p>"Working with Ayesha was a pleasure. Her responsive designs and accessibility focus made our app inclusive and user-friendly."</p>
+            <h4>John Smith, Client</h4>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact Me</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required aria-label="Your Name">
+            <input type="email" placeholder="Your Email" required aria-label="Your Email">
+            <textarea placeholder="Your Message" rows="5" required aria-label="Your Message"></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <section id="resume" class="resume">
+        <h2>Download My Resume</h2>
+        <a href="ayesha_resume.pdf" download>Download Resume</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Ayesha. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
